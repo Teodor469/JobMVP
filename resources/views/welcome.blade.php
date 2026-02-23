@@ -19,5 +19,26 @@
             </style>
         @endif
     </head>
-    
+    <body>
+        <nav class="bg-secondary px-6 py-3">
+            <div class="flex flex-row items-center gap-2">
+                <img src="{{ asset('images/logo.svg') }}" alt="logo" class="h-8 w-auto">
+                <a href="#" class='text-primary text-sm font-medium px-3 py-1'>Dashboard</a>
+                <a href="#" class='text-primary text-sm font-medium px-3 py-1'>Templates</a>
+                <div class="flex flex-row ml-auto gap-2">
+                    <a href="{{ route('register') }}" class='text-primary text-sm font-medium px-3 py-1'>Sign Up</a>
+                    <a href="{{ route('login') }}" class='text-primary text-sm font-medium px-3 py-1'>Log In</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="border-2 rounded-xl mx-auto mt-16 max-w-2xl px-12 py-16 text-center">
+            <div class="text-3xl font-bold mb-6">
+                The First Absolutely Free Online CV Builder!
+            </div>
+            <button class="bg-accent rounded-lg text-primary text-sm font-medium px-6 py-2.5">
+                Build Your CV!
+            </button>
+        </section>
+    </body>
 </html>

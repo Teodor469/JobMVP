@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function CVForm()
+    {
+        return $this->hasMany(CVForm::class);
+    }
+
+    public function PdfExport()
+    {
+        return $this->hasMany(PdfExport::class);
+    }
 }
