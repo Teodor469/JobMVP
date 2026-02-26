@@ -10,6 +10,8 @@ class CVForm extends Model
 {
     use HasSlug;
 
+    protected $table = 'cv_forms';
+
     protected $fillable = [
         'user_id',
         'title',
@@ -21,7 +23,7 @@ class CVForm extends Model
         'languages',
         'projects',
         'profile_picture',
-        'last_edit_at',
+        'last_edited_at',
     ];
 
     protected $casts = [
@@ -34,7 +36,7 @@ class CVForm extends Model
         'last_edited_at' => 'datetime',
     ];
 
-    public function getSlugsOption()
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
                 ->generateSlugsFrom('title')
@@ -48,9 +50,16 @@ class CVForm extends Model
             'experience' => $this->experience ?? [],
             'education' => $this->education ?? [],
             'skills' => $this->skills ?? [],
-            'languages' => $this->skills ?? [],
+            'languages' => $this->languages ?? [],
             'projects' => $this->projects ?? [],
             'profile_picture' => $this->profile_picture
         ];
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($cv) {
+            $cv->user_id = auth()->id();
+        });
     }
 }
